@@ -1,10 +1,483 @@
 # 更新日志
 
+## 2023
+
+### 11-27 v3.15.6
+
+- 修复 esm 问题
+
+### 11-27 v3.15.5
+
+- 优化 node modules 大小
+- 增加 linux/arm64 docker 镜像
+- 支持使用 [bun](https://bun.sh/) 运行
+
+### 11-24 v3.15.4
+
+- 优化 docker 镜像大小
+- 搜图模式下可以切换至原图模式 [#443](../../issues/443)
+- 发送消息允许不转义普通文本内容 [#448](../../issues/448)
+- 配置项变更
+  - A `bot.disableMessageEscape`
+
+### 11-24 v3.15.3
+
+- 修复 ghproxy 喜提 GFW 的问题
+- 支持 docker 部署（大概）
+
+### 10-11 v3.15.2
+
+- 修复哔哩哔哩信息流推送可能重复推送的问题
+- 修复哔哩哔哩动态解析发送的视频播放数和弹幕数可能为 NaN 的问题
+
+### 10-06 v3.15.1
+
+- 部分版本的QQ客户端发送的图片 go-cqhttp 暂时无法获取([go-cqhttp#2401](https://github.com/Mrs4s/go-cqhttp/issues/2401))，导致搜图错误，暂时先增加提示
+
+### 09-25 v3.15.0
+
+- 增加 `--get-url` 的别名 `链接`
+- 增加转换原图功能，可用于解决后续版本手Q将不支持保存自定义表情的问题(🖕🏻fuck you qq)，手机在群里回复带有自定义表情的消息，@机器人并附带“原图”二字，机器人会将表情包以普通图片形式重新发送，使手Q可以保存
+- 增加 VITS 全局默认模型设置 [#441](../../issues/441)
+- 配置项变更
+  - A `bot.vits.defaultModelId`
+
+### 09-14 v3.14.6
+
+- 修复哔哩哔哩解析和推送新版动态多张图只会发送第一张的问题
+
+### 09-12 v3.14.5
+
+- 修复哔哩哔哩解析和推送新版动态错误的问题
+- 修复获取已失效的群文件下载链接会无响应的问题
+
+### 08-27 v3.14.4
+
+- 修复哔哩哔哩动态解析 -352 错误
+
+### 08-04 v3.14.3
+
+- 哔哩哔哩信息流推送过滤抽奖结果动态
+- 修复哔哩哔哩信息流推送启用后无法推送直播的问题
+- 哔哩哔哩信息流推送增加 cookie 过期提醒
+
+### 07-21 v3.14.2
+
+- 修复某些情况下搜本子出错的问题
+- 哔哩哔哩支持新版动态 opus 类型解析
+- 修复哔哩哔哩信息流推送可能漏推送或重复推送的问题
+
+### 07-18 v3.14.1
+
+- 修复检查更新失败的问题
+
+### 07-18 v3.14.0
+
+- 哔哩哔哩支持使用信息流推送，详见“wiki-附加功能-哔哩哔哩推送-信息流推送”
+- 配置项变更
+  - A `bot.bilibili.useFeed`
+  - A `bot.bilibili.feedCheckInterval`
+  - A `bot.bilibili.cookie`
+
+### 07-17 v3.13.0
+
+- 支持数组形式消息上报，即 go-cqhttp 的 post-format 配置不再要求为 `string`
+
+### 06-26 v3.12.1
+
+- 修复哔哩哔哩动态解析
+
+### 06-08 v3.12.0
+
+- 语言库可以指定只对某些用户或群组生效（详见 wiki）
+- 增加群白名单设置
+- 配置项变更
+  - A `bot.whiteGroup`
+
+### 06-05 v3.11.0
+
+- 移除 yarn.lock 以免使用 npm >= 8 安装依赖时修改 yarn.lock 导致后续更新冲突
+- 修复某些哔哩哔哩小程序分享没有触发解析的问题
+- 允许在群组内使用管理员指令 [#427](../../issues/427)
+
+### 05-12 v3.10.1
+
+- 修复语言库多个回复项随机结果不正确的问题
+- 修复部分情况下 VITS 模型列表有误的问题 [#423](../../issues/423)
+- 修复哔哩哔哩动态无法解析 [#424](../../issues/424)
+- vits-simple-api 默认语言优化 [#425](../../issues/425)
+
+### 05-10 v3.10.0
+
+- 语言库支持多个回复项 [#419](../../issues/419)
+- 修复同时启用群内搜图私聊发送和合并转发时表现不正确的问题 [#421](../../issues/421)
+
+### 04-27 v3.9.1
+
+- 修复 vits-list 指令私聊时会触发默认回复的问题
+- 修复 VITS 语音经常发送超时的问题
+- 修复 iOS 无法播放收到的 VITS 语音的问题（需要安装 FFmpeg）
+
+### 04-26 v3.9.0
+
+- 新增 VITS 语音合成功能，详见 [wiki-附加功能-VITS](../../wiki/%E9%99%84%E5%8A%A0%E5%8A%9F%E8%83%BD#vits)
+- 配置项变更
+  - A `bot.vits`
+
+### 04-14 v3.8.1
+
+- 哔哩哔哩解析支持新版动态地址
+- pixiv.net 绿了，移出红链黑名单
+
+### 04-07 v3.8.0
+
+- 语言库支持与其他功能进行联动，如 ChatGPT，详见 wiki-附加功能-语言库-联动其他功能 [#406](../../issues/406)
+- ChatGPT 黑白名单支持使用 overrides 进行覆盖 [#407](../../issues/407)
+- 修复方舟公招数据无法更新的问题 [#408](../../issues/408)
+
+### 03-22 v3.7.1
+
+- 修复无法搜索 Electron QQ 发出的图片的问题（需使用 go-cqhttp v1.0.0-rc5 及以上版本）
+
+### 03-08 v3.7.0
+
+- 哔哩哔哩解析支持对小程序分享解析成功后撤回原消息 [#397](../../issues/397)
+- 哔哩哔哩解析增加群黑白名单配置
+- 配置项变更
+  - A `bot.bilibili.recallMiniProgram`
+  - A `bot.bilibili.blackGroup`
+  - A `bot.bilibili.whiteGroup`
+
+### 03-04 v3.6.0
+
+- 增加了选项可以设置从 nHentai 镜像站获取本子详情
+- 优化了 saucenao 搜索本子的范围
+- 配置项变更
+  - A `bot.getDoujinDetailFromNhentaiMirrorSite`
+  - M `bot.getDoujinDetailFromNhentai` 默认值变更为 `true`
+
+### 03-02 v3.5.0
+
+- ChatGPT 支持使用 Chat completion API 和新增的 gpt-3.5 模型
+- 修复了 `bot.chatgpt.userDailyLimit` 不生效的问题
+- 配置项变更
+  - A `bot.chatgpt.useChatAPI`
+  - A `bot.chatgpt.prependMessages`
+  - M `bot.chatgpt.model` 默认值变更为 `gpt-3.5-turbo`
+  - M `bot.chatgpt.maxTokens` 默认值变更为 `0`
+
+注意：本次更新涉及到 ChatGPT 默认配置变动，新增配置项会与旧默认配置项存在冲突
+
+- 如果你启用了 `autoUpdateConfig` 但是没有使用过该能力，建议删除 `bot.chatgpt` 配置让其重新自动生成
+- 如果你已经在使用 ChatGPT
+  - 如果你希望继续使用旧的模型与 Completion API，那么请配置 `useChatAPI` 为 `false`，未配置 `maxTokens` 的需要指定一个值（旧默认值为 `3072`）
+  - 如果你希望使用新的 Chat completion API 和 gpt-3.5 模型，那么请将 `model` 和 `maxTokens` 配置还原为新的默认值（`maxTokens` 如有需求也当然可以自由设置）
+
+### 02-25 v3.4.0
+
+- 增加搜图反馈功能，可以在收到图片时回复以辅助判断图片有没有被屏蔽，默认关闭 [#393](../../issues/393)
+- 配置项变更
+  - A `bot.searchFeedback`
+  - A `bot.replys.searchFeedback`
+
+### 02-15 v3.3.0
+
+- 修复使用群发功能带图时会触发搜图的问题
+- ChatGPT 增加每名用户每日使用次数限制配置
+- 配置项变更
+  - A `bot.chatgpt.userDailyLimit`
+
+### 01-14 v3.2.0
+
+- 增加点赞功能（需要使用支持点赞的机器人客户端，原版 go-cqhttp 并不支持）
+- ChatGPT 支持选项覆盖，可以匹配正则使用不同参数（详见 wiki）[#387](../../issues/387)
+- 配置项变更
+  - A `bot.like`
+  - A `bot.chatgpt.overrides`
+
+## 2022
+
+### 12-17 v3.1.2
+
+- 修复 ChatGPT 黑白名单不生效问题
+- 优化 ChatGPT 回答多余字符过滤
+
+### 12-17 v3.1.1
+
+- 修复 ChatGPT prompt 可能含有非文本内容的问题
+
+### 12-17 v3.1.0
+
+- 修复 puppeteer 可能在 linux 中无法启动的问题
+- 新增 ChatGPT 功能
+- 配置项变更
+  - A `bot.chatgpt`
+
+### 12-11 v3.0.0
+
+注意：本次升级请勿使用 `--update-cqps` 指令，而是手动执行以下命令
+
+```bash
+npm run kill # 如果你的 pm2 上存在其他程序不想 kill，也可以执行 npx pm2 delete cqps
+npm run update
+```
+
+- BREAKING CHANGE: 项目完全转换为 esm，仅支持 node 14 及以上版本
+- 处理 ascii2d 结果的红链
+- 哔哩哔哩动态推送放宽旧动态的时间判定，以免审核时间过长导致被过滤而漏推送
+- 支持使用 Puppeteer 绕过 cf js challenge 以解决 ascii2d 和 nHentai 的请求问题（见“wiki-配置文件说明-使用 Puppeteer 绕过 cf js challenge”）
+- 配置项变更
+  - A `bot.ascii2dUsePuppeteer`
+  - A `bot.nHentaiUsePuppeteer`
+
+### 11-19 v2.42.0
+
+- 将 `pixiv.net` 加入红链处理名单（否则有概率被屏蔽）
+- 使用新的红链处理方式，可以发出完整链接，只需手动复制到浏览器打开即可，不需要手动删除字符，大部分主流浏览器都可以正常打开（Chrome/Safari/Edge等）
+- 如需照顾少数无法正常打开链接的浏览器，请设置 `bot.handleBannedHostsWithLegacyMethod` 为 `true`
+- 为方便复制链接，移除 `Source:` 文字
+- 配置项变更
+  - A `bot.handleBannedHostsWithLegacyMethod`
+
+### 11-13 v2.41.0
+
+- 哔哩哔哩推送支持视频列表（以前只支持视频合集，配置见 wiki）[#373](../../issues/373)
+
+### 11-07 v2.40.2
+
+- 修复哔哩哔哩动态内链接的处理问题 [#370](../../issues/370)
+- 根据哔哩哔哩推送检测间隔过滤掉过旧的动态以免B站 API 抽风导致重复推送 [#370](../../issues/370)
+
+### 10-31 v2.40.1
+
+- 修复哔哩哔哩用户没有动态时添加推送会不停打印错误日志的问题 [#369](../../issues/369)
+- 修复 `bot.handleBannedHosts` 配置没有生效的问题
+
+### 10-29 v2.40.0
+
+- 支持输出 ascii2d 人为提交的搜索结果 [#361](../../issues/361)
+- 哔哩哔哩解析支持当原消息撤回时同步撤回解析结果（默认启用，可在配置中关闭）
+- 配置项变更
+  - A `bot.bilibili.respondRecall`
+
+### 09-27 v2.39.6
+
+- 修复有时候输出错误日志会发生额外错误的问题
+
+### 09-27 v2.39.5
+
+- 修复某些情况下 bot 会崩溃的问题
+
+### 09-22 v2.39.4
+
+- 修复哔哩哔哩直播会推送轮播的问题
+
+### 09-22 v2.39.3
+
+- 修复了哔哩哔哩直播推送失效的问题 [#360](../../issues/359)
+- 搜图结果合并转发中附带的原图也会按照 `bot.antiShielding` 进行反和谐处理
+
+### 09-10 v2.39.2
+
+- 优化了方舟公招计算识别，现在不需要特地选中高资或资深了，大概 [#359](../../issues/359)
+- 修复了方舟公招计算高资和资深提示背景异常的问题
+
+### 09-09 v2.39.1
+
+- 过滤直播推送链接参数 [#358](../../issues/358)
+- 优化错误日志输出
+
+### 08-28 v2.39.0
+
+- 图片反和谐支持组合方式，详见配置注释
+- 支持对搜图结果缩略图进行反和谐
+- 目前发现搜图结果中包含红链会导致消息无法发出，因此默认会对红链进行处理，可在配置中关闭
+- nHentai 上了 cf 五秒盾导致无法搜索本子，因此 `bot.getDoujinDetailFromNhentai` 默认值改为 `false`，并建议关闭
+- 配置项变更
+  - A `bot.antiShielding`
+  - A `bot.handleBannedHosts`
+  - M `bot.getDoujinDetailFromNhentai`
+  - M `bot.setu.antiShielding`
+
+### 07-21 v2.38.0
+
+- 由于历史原因，机器人硬编码忽略了 `/` 与 `<` 开头的发言以兼容同时部署了其他机器人的情况，现将这一功能提至配置项 `bot.regs.ignore`，默认为 `""` 即不进行忽略，如有需要请在更新后设置此项 [#344](../../issues/344)
+- 配置项变更
+  - A `bot.regs.ignore`
+
+### 07-11 v2.37.2
+
+- 哔哩哔哩解析被删除的动态或视频时增加回复提示 [#336](../../issues/336)
+- 更改部分功能使用到的 jsdelivr 域名防止国内部分地区无法访问 cdn.jsdelivr.net => fastly.jsdelivr.net
+
+### 07-10 v2.37.1
+
+- 修复哔哩哔哩动态解析问题 [#339](../../issues/339)
+
+### 07-08 v2.37.0
+
+- 哔哩哔哩推送动态支持只推送视频 [#335](../../issues/335)
+- 哔哩哔哩推送支持视频合集 [#335](../../issues/335)
+- 配置项变更
+  - M `bot.bilibili.push`（见 wiki）
+
+### 07-04 v2.36.1
+
+- 哔哩哔哩动态解析支持投票 [#333](../../issues/333)
+- `--update-cqps` 指令现会将更新过程日志保存到 `logs/update.log`
+- 由于私聊回复（指 CQ:reply）存在 bug ([Mrs4s/go-cqhttp#1421](https://github.com/Mrs4s/go-cqhttp/issues/1421))，将暂时不会发送私聊的回复
+
+### 06-25 v2.36.0
+
+- setu 发送链接使用回复而不是 @
+- 更新 @napi-rs/canvas 以支持一些旧版本 linux
+- 支持私聊合并转发搜图结果（需要 go-cqhttp ≥ v1.0.0-rc2，且目前因为有较多 bug 所以不推荐启用，建议等 go-cqhttp 修复）
+- 支持对 saucenao 的 NSFW 结果隐藏缩略图
+- 配置项变更
+  - A `bot.hideImgWhenSaucenaoNSFW`
+  - A `bot.privateForwardSearchResult`
+
+### 06-20 v2.35.0
+
+- 移除哔哩哔哩解析的视频搜索兜底以避免误触
+- 增加 ascii2d 本地上传搜索功能开关（默认关闭，使用在线 URL API），或许可以解决某些情况下的搜索问题吧，我也不好说（
+- 配置项变更
+  - A `bot.ascii2dLocalUpload`
+
+### 06-10 v2.34.8
+
+- 修复 ascii2d 搜索失败问题
+
+### 06-10 v2.34.7
+
+- 修复 WhatAnime 不能得到正确搜索结果的问题  [#321](../../issues/321)
+
+### 06-05 v2.34.6
+
+含重要漏洞修复，请务必更新
+
+- setu 对管理者私聊不做限制 [#318](../../issues/318)
+- 修复外部文本可注入 CQ 码的问题 [#320](../../issues/320)
+
+### 05-29 v2.34.5
+
+- 哔哩哔哩动态解析支持音频类型 [#317](../../issues/317)
+
+### 05-26 v2.34.4
+
+- 修复哔哩哔哩短链接无法解析的问题  [#315](../../issues/315) [#316](../../issues/316)
+
+### 05-21 v2.34.3
+
+- 哔哩哔哩动态解析支持 4200 和 4308 类型 [#314](../../issues/314)
+- 哔哩哔哩动态解析会尝试去除正文中的链接的一些垃圾参数
+
+### 05-18 v2.34.2
+
+- setu 增加群组黑名单配置 [#304](../../issues/304)
+- 配置项变更
+  - A `bot.setu.blackGroup`
+
+### 05-14 v2.34.1
+
+- 哔哩哔哩解析动态中的视频增加详细信息 [#310](../../issues/310)
+
+### 03-12 v2.34.0
+
+- 修复哔哩哔哩解析可能使用非视频标题进行视频搜索的问题
+- setu 可以设置不发送链接 [#302](../../issues/302)
+- r18 setu 只发链接功能增加对频道的设置
+- 哔哩哔哩推送可以设置@全员，详见 wiki [#293](../../issues/293)
+- 配置项变更
+  - A `bot.setu.sendUrls`
+  - A `bot.setu.r18OnlyUrl.guild`
+  - A `bot.bilibili.push.*.*.dynamicAtAll`
+  - A `bot.bilibili.push.*.*.liveAtAll`
+
+### 03-05 v2.33.7
+
+- 哔哩哔哩解析支持结构化消息 [#300](../../issues/300)
+
+### 03-05 v2.33.6
+
+- 增加 `.npmrc` 默认启用 `legacy-peer-deps` 以解决 npm v7 以上可能出现 peer dependencies 冲突的问题
+- 明日方舟公招计算器增加“资深干员”和“高级资深干员”无法被识别时的处理提示
+
+### 02-26 v2.33.5
+
+- 修复还是没有完全修好的 ascii2d 无法使用的问题 [#283](../../issues/283)
+- 配置项变更
+  - A `bot.cfTLSVersion`
+
+### 02-26 v2.33.4
+
+- 修复没有完全修好的 ascii2d 无法使用的问题 [#283](../../issues/283)
+
+### 02-26 v2.33.3
+
+- 修复 ascii2d 无法使用的问题，感谢 @DiheChen [#283](../../issues/283)
+- `bot.useAscii2dWhenQuotaExcess`, `bot.useAscii2dWhenLowAcc`, `bot.useAscii2dWhenFailed` 的默认值变更回 `true`
+- 更新了一些依赖的版本
+
+### 02-18 v2.33.2
+
+- 修复部分参数在特定情况下无法正常解析的问题 ([#292](../../issues/292))
+
+### 02-13 v2.33.1
+
+- 在频道发送的 setu 无法撤回，是已知现象，go-cqhttp 尚未支持撤回频道消息 ([#290](../../issues/290))
+- 由于频道监管较严，默认禁止在频道请求 r18 setu ([#291](../../issues/291))
+- 配置项变更
+  - A `bot.setu.r18AllowInGuild`
+
+### 02-12 v2.33.0
+
+- 增加频道支持，详情请看 [wiki](../../wiki/%E9%A2%91%E9%81%93%E6%94%AF%E6%8C%81)
+- 检查更新改为使用 GitHub API，不再依赖 isomorphic-git
+- 由于 [#283](../../issues/283) 尚未解决，因此 `bot.useAscii2dWhenQuotaExcess`, `bot.useAscii2dWhenLowAcc`, `bot.useAscii2dWhenFailed` 的默认值更改为 `false`
+- 配置项变更
+  - A `bot.adminTinyId`
+  - A `bot.enableGuild`
+
+### 02-04 v2.32.1
+
+- 该版本无内容更新，仅为公告用途
+- 近期请勿启用 `bot.pmSearchResultTemp` 功能，通过 go-cqhttp 发送群临时会话很可能导致账号冻结，详情请关注 https://github.com/Mrs4s/go-cqhttp/issues/1338
+
+### 01-08 v2.32.0
+
+- 悲报：ascii2d 因上了 CF，机器人请求可能会被 JS Challenge 拦截，目前没有找到解决方法，如频繁出现 403 错误请将 `bot.useAscii2dWhenQuotaExcess`, `bot.useAscii2dWhenLowAcc`, `bot.useAscii2dWhenFailed` 设为 `false`；如您有好的解决方案请前往 [#283](../../issues/283) 献言献策，谢谢
+- 增加自定义 canvas 库的能力，如本项目默认使用的 [@napi-rs/canvas](https://www.npmjs.com/package/@napi-rs/canvas) 出现异常，可切换至使用 [canvas](https://www.npmjs.com/package/canvas)，详情见 wiki
+- 配置项变更
+  - A `bot.canvasLibrary`
+
+### 01-03 v2.31.2
+
+- 修复可能因B站抽风而重复推送动态的问题 ([#281](../../issues/281))
+- 更新了一些依赖的版本
+
+### 01-01 v2.31.1
+
+- 新年快乐！
+- 改进了B站动态推送检测机制，减少漏动态问题
+- 新增支持解析类型为 2048 的B站动态
+
 ## 2021
+
+### 10-24 v2.31.0
+
+- 新增B站动态、直播推送功能
+- 新增 `npm run update` 脚本用于一键更新，会自动判断包管理器，如果目录中存在 `package-lock.json` 则使用 `npm`，否则使用 `yarn`
+- 新增管理者私聊指令 `--update-cqps` 用于远程一键更新，该更新方式是实验性的，建议在可以登上服务器的状态下使用，以免出现意外起不来（
+- 修复 go-cqhttp v1.0.0-beta8 及以上版本无法回复搜图的问题 by @Magic-Xin
+- 修复无法解析B站手机客户端分享的动态短链的问题
+- 配置项变更
+  - A `bot.replys.push`
+  - A `bot.replys.pushCheckInterval`
 
 ### 10-24 v2.30.3
 
-- 因 pixiv.cat 在大陆被墙，`bot.setu.sendPximgProxys` 默认配置变更为 `["https://i.pixiv.re/"]`；设置了 `bot.setu.pximgProxy` 的用户也请注意修改
+- 因 pixiv.cat 在大陆被墙，`bot.setu.sendPximgProxies` 默认配置变更为 `["https://i.pixiv.re/"]`；设置了 `bot.setu.pximgProxy` 的用户也请注意修改
 - setu 使用在线反代时，如果设置了代理，反和谐会走代理下载图片；不反和谐时仍由 go-cqhttp 下载图片，这种情况下如果需要走代理，需要给 go-cqhttp 配置代理
 
 ### 10-24 v2.30.2
@@ -84,7 +557,7 @@
 - whatanime 发送预览视频不再需要依赖 ffmpeg
 - 改进方舟公招计算器的识别逻辑
 - 默认 OCR 服务变更为为 qq
-- `bot.setu.pximgProxy` 和 `bot.setu.sendPximgProxys` 新增支持一些占位符
+- `bot.setu.pximgProxy` 和 `bot.setu.sendPximgProxies` 新增支持一些占位符
 - 配置项变更
   - M `bot.ocr.use` 默认值 `"ocr.space"` -> `"qq"`
   - M `bot.akhr.ocr` 默认值 `"ocr.space"` -> `"qq"`
@@ -155,7 +628,7 @@ git pull
 - 配置项变更
   - M `bot.setu.pximgServerPort` 默认值 `60233` -> `0`
   - A `bot.pmSearchResultTemp`
-  - A `bot.setu.sendPximgProxys`
+  - A `bot.setu.sendPximgProxies`
   - A `bot.setu.shortenPximgProxy`
   - A `bot.setu.r18OnlyUrl`
   - A `bot.setu.r18OnlyPrivate`
@@ -248,7 +721,7 @@ git pull
 - `ocr_image` API 移除实验模式，如有使用请将 go-cqhttp 升级到 v0.9.34 以上
 - 可设置 saucenao 在搜到本子时是否进一步去 nhentai 搜索（默认是，与之前的行为一致，若没有特殊需求不需要动该设置）([#134](../../issues/134))
 - 配置项变更
-  - A `bot.getDojinDetailFromNhentai`
+  - A `bot.getDoujinDetailFromNhentai`
 
 ### 01-25 v2.21.9
 

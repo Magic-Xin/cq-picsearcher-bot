@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true
+  },
+  "include": ["index.mjs", "src/**/*", "libs/**/*"]
+}

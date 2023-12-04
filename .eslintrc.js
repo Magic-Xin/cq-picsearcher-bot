@@ -3,7 +3,7 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ['standard'],
+  extends: ['standard', 'prettier'],
   parserOptions: {
     ecmaVersion: 12,
     sourceType: 'module',
@@ -11,10 +11,18 @@ module.exports = {
   rules: {
     curly: 'off',
     camelcase: 'off',
-    'no-case-declarations': 'off',
     semi: ['error', 'always'],
     'comma-dangle': ['error', 'only-multiline'],
     'space-before-function-paren': 'off',
     yoda: 'off',
+    'import/order': [
+      'warn',
+      {
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+        },
+      },
+    ],
   },
 };
